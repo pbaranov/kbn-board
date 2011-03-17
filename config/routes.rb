@@ -1,13 +1,13 @@
 KbnBoard::Application.routes.draw do
-  resources :actions
+  resources :users
 
   resources :tickets
 
   resources :categories
 
-  resources :boards
+  resources :actions
 
-  resources :users
+  resources :boards
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
