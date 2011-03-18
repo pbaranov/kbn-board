@@ -1,7 +1,8 @@
 class CreateActions < ActiveRecord::Migration
   def self.up
     create_table :actions do |t|
-
+	  t.integer :user_id
+	  t.integer :ticket_id
       t.timestamps
     end
   end

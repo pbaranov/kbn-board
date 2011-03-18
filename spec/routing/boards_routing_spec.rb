@@ -3,7 +3,7 @@ require "spec_helper"
 describe BoardsController do
   describe "routing" do
 
-    it "recognizes and generates #index" do
+	it "recognizes and generates #index" do
       { :get => "/boards" }.should route_to(:controller => "boards", :action => "index")
     end
 
