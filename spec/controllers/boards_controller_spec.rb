@@ -21,12 +21,22 @@ describe BoardsController do
  # end
   it{should route(:get,'/boards/1').
   	to(:controller=>:boards,:action=>:show,:id=>1)}
+  
   it{should route(:get,'/boards/new').
   	to(:controller=>:boards,:action=>:new)}
-
+  
+  context "for creating new board" do
+    before do
+      get :create
+    end
+    it { should respond_with(:success) }
+    it { should render_template(:new)}
+  end
+  
+  
+  
   it{should route(:get,'/boards/1/edit').
   	to(:controller=>:boards,:action=>:edit,:id=>1)}
-  	
   	
   describe "GET show" do
     it "assigns the requested board as @board" do
@@ -131,6 +141,6 @@ describe BoardsController do
       response.should redirect_to(boards_url)
     end
   end
-
-  
 end
+
+

@@ -6,6 +6,8 @@ gem 'rails', '3.0.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'authlogic'
+gem 'dynamic_form'
 
 group :test, :development do
   gem 'rspec-rails', '2.5.0'
