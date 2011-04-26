@@ -1,0 +1,23 @@
+<style type="text/css">
+
+div
+{
+background-color:#b0c4de;
+margin:10px;
+border:5px solid gray;
+height: 250px;
+width: 50px;
+}
+</style>
+
+    <table>
+    <tr>
+    <% @board.categories.each do |category|%>
+       <td>
+       	<div>
+       	 <%=link_to category.name, board_category_path(category)%>
+       </div>
+       </td>
+    <% end%>
+    </tr>
+	</table>

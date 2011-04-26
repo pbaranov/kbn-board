@@ -4,7 +4,7 @@
   <b>Name:</b>
   <%= @board.name %>
 </p>
-
+<%= render 'categories'%>
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>

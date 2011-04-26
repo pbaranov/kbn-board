@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.find(params[:id])
-
+	@board = Board.find(params[:board_id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @category }
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.xml
   def new
     @category = Category.new
-
+  	@board = Board.find(params[:board_id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @category }
@@ -40,11 +40,11 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
-
+    @category = Category.new(params[:category],params[:board_id])
+    @board = Board.find(params[:board_id])
     respond_to do |format|
       if @category.save
-        format.html { redirect_to(@category, :notice => 'Category was successfully created.') }
+        format.html { redirect_to(@board, :notice => 'Category was successfully created.') }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }

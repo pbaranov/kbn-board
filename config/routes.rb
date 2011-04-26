@@ -5,16 +5,18 @@ KbnBoard::Application.routes.draw do
   	end
   end
   resources :tickets
-  resources :categories
   resources :actions
-  resources :boards
+  resources :categories
+  resources :boards do
+	  resources :categories, :as=> :categories
+  end
   resources :user_sessions
 
   get 'login' => 'user_sessions#new', :as => :login
   delete 'logout' => 'user_sessions#destroy', :as => :logout
    #match '/login' => 'user_session#new'
 
-  
+  root :to => 'boards#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
