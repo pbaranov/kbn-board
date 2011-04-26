@@ -15,7 +15,7 @@ width: 50px;
     <% @board.categories.each do |category|%>
        <td>
        	<div>
-       	 <%=link_to category.name, board_category_path(category)%>
+       	 <%=link_to category.name, board_category_path(@board,category)%>
        </div>
        </td>
     <% end%>
