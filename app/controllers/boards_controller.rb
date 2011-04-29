@@ -3,7 +3,9 @@ class BoardsController < ApplicationController
   # GET /boards.xml
   def index
     @boards = Board.all
-
+    unless @boards 
+    	logger.debug ="no boards found"
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @boards }

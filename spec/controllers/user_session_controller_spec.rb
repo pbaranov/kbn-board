@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe UserSessionController do
+describe UserSessionsController do
 
 end

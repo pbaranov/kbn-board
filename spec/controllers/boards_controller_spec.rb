@@ -9,34 +9,6 @@ describe BoardsController do
     @mock_board ||= mock_model(Board, stubs).as_null_object
   end
 
-  it{should route(:get,"/boards").
-  	to(:controller=>:boards,:action=>:index)}
-  
-#  describe "GET index" do
- #   it "assigns all boards as @boards" do
- #     Board.stub(:all) { [mock_board] }
- #     get :index
- #     assigns(:boards).should eq([mock_board])
- #   end
- # end
-  it{should route(:get,'/boards/1').
-  	to(:controller=>:boards,:action=>:show,:id=>1)}
-  
-  it{should route(:get,'/boards/new').
-  	to(:controller=>:boards,:action=>:new)}
-  
-  context "for creating new board" do
-    before do
-      get :create
-    end
-    it { should respond_with(:success) }
-    it { should render_template(:new)}
-  end
-  
-  
-  
-  it{should route(:get,'/boards/1/edit').
-  	to(:controller=>:boards,:action=>:edit,:id=>1)}
   	
   describe "GET show" do
     it "assigns the requested board as @board" do
@@ -44,6 +16,14 @@ describe BoardsController do
       get :show, :id => "37"
       assigns(:board).should be(mock_board)
     end
+  end
+
+  describe "GET index" do
+  	it "is assignes all boards as @boards" do
+  		Board.stub(:all) {mock_board}
+  		get :index
+  		assigns(:boards).should be(mock_board)
+  	end
   end
 
   describe "GET new" do
@@ -59,72 +39,6 @@ describe BoardsController do
       Board.stub(:find).with("37") { mock_board }
       get :edit, :id => "37"
       assigns(:board).should be(mock_board)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "assigns a newly created board as @board" do
-        Board.stub(:new).with({'these' => 'params'}) { mock_board(:save => true) }
-        post :create, :board => {'these' => 'params'}
-        assigns(:board).should be(mock_board)
-      end
-
-      it "redirects to the created board" do
-        Board.stub(:new) { mock_board(:save => true) }
-        post :create, :board => {}
-        response.should redirect_to(board_url(mock_board))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved board as @board" do
-        Board.stub(:new).with({'these' => 'params'}) { mock_board(:save => false) }
-        post :create, :board => {'these' => 'params'}
-        assigns(:board).should be(mock_board)
-      end
-
-      it "re-renders the 'new' template" do
-        Board.stub(:new) { mock_board(:save => false) }
-        post :create, :board => {}
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested board" do
-        Board.stub(:find).with("37") { mock_board }
-        mock_board.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :board => {'these' => 'params'}
-      end
-
-      it "assigns the requested board as @board" do
-        Board.stub(:find) { mock_board(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:board).should be(mock_board)
-      end
-
-      it "redirects to the board" do
-        Board.stub(:find) { mock_board(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(board_url(mock_board))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the board as @board" do
-        Board.stub(:find) { mock_board(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:board).should be(mock_board)
-      end
-
-      it "re-renders the 'edit' template" do
-        Board.stub(:find) { mock_board(:update_attributes => false) }
-        put :update, :id => "1"
-        response.should render_template("edit")
-      end
     end
   end
 

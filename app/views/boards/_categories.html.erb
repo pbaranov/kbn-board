@@ -1,6 +1,6 @@
 <style type="text/css">
 
-div
+div.categories
 {
 background-color:#b0c4de;
 margin:10px;
@@ -14,7 +14,7 @@ width: 50px;
     <tr>
     <% @board.categories.each do |category|%>
        <td>
-       	<div>
+       	<div class="categories">
        	 <%=link_to category.name, board_category_path(@board,category)%>
        </div>
        </td>

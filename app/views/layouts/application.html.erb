@@ -7,7 +7,22 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<table>
+	<tr>
+		<td align="left" style="width:500px;word-spacing:12px;font-size:90%;padding-left:12px;padding-right:10px;white-space:nowrap;">
+			<a class="topnav" href="/boards" target="_top">Boards</a>
+			
+		</td>
+		<td align="right" style="word-spacing:6px;font-size:80%;padding-right:10px;color:#888888;white-space:nowrap;">
+			<%if current_user%>
+			 <%=link_to current_user.login, user_path(current_user)%>
+			 <%=link_to "logout", logout_path, :method=>:delete%>
+			<%else%>
+			 <%= link_to "login", login_path%>
+			<%end%>
+		</td>
+	</tr>	
+</table>
 <%= yield %>
 
 </body>

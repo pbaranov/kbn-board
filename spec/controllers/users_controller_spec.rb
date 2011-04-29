@@ -20,8 +20,8 @@ describe UsersController do
 
   describe "GET show" do
     it "assigns the requested user as @user" do
-      User.stub(:find).with("37") { mock_user }
-      get :show, :id => "37"
+      User.stub(:find_by_login).with("qwe") { mock_user }
+      get :show, :user_login => "qwe"
       assigns(:user).should be(mock_user)
     end
   end
@@ -36,8 +36,8 @@ describe UsersController do
 
   describe "GET edit" do
     it "assigns the requested user as @user" do
-      User.stub(:find).with("37") { mock_user }
-      get :edit, :id => "37"
+      User.stub(:find_by_login).with("qwe") { mock_user }
+      get :edit, :user_login => "qwe"
       assigns(:user).should be(mock_user)
     end
   end

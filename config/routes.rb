@@ -1,7 +1,9 @@
 KbnBoard::Application.routes.draw do
-  resources :users, :except => :index do
+  resources :users do
   	collection do
   		get ':user_login' => 'users#show', :as => :show
+  		get ':user_login/edit' => 'users#edit', :as => :edit
+  		delete ':user_login' => 'users#destroy', :as => :destroy
   	end
   end
   resources :tickets
@@ -14,6 +16,7 @@ KbnBoard::Application.routes.draw do
 
   get 'login' => 'user_sessions#new', :as => :login
   delete 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'register' => 'users#new', :as => :register
    #match '/login' => 'user_session#new'
 
   root :to => 'boards#index'
