@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "categories/edit.html.erb" do
   before(:each) do
     @category = assign(:category, stub_model(Category))
+    @board = assign(:board,stub_model(Board))
   end
 
   it "renders the edit category form" do

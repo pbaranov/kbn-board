@@ -6,11 +6,13 @@ KbnBoard::Application.routes.draw do
   		delete ':user_login' => 'users#destroy', :as => :destroy
   	end
   end
-  resources :tickets
+  resources :tickets, :except => :index
   resources :actions
-  resources :categories
+  resources :categories, :except => :index do
+    resources :tickets
+  end
   resources :boards do
-	  resources :categories, :as=> :categories
+	  resources :categories
   end
   resources :user_sessions
 

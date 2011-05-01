@@ -3,9 +3,9 @@ require "spec_helper"
 describe TicketsController do
   describe "routing" do
 
-    it "recognizes and generates #index" do
-      { :get => "/tickets" }.should route_to(:controller => "tickets", :action => "index")
-    end
+    #it "recognizes and generates #index" do
+     # { :get => "/tickets" }.should route_to(:controller => "tickets", :action => "index")
+    #end
 
     it "recognizes and generates #new" do
       { :get => "/tickets/new" }.should route_to(:controller => "tickets", :action => "new")

@@ -10,14 +10,7 @@ describe TicketsController do
     @mock_ticket ||= mock_model(Ticket, stubs).as_null_object
   end
 
-  describe "GET index" do
-    it "assigns all tickets as @tickets" do
-      Ticket.stub(:all) { [mock_ticket] }
-      get :index
-      assigns(:tickets).should eq([mock_ticket])
-    end
-  end
-
+  
   describe "GET show" do
     it "assigns the requested ticket as @ticket" do
       Ticket.stub(:find).with("37") { mock_ticket }

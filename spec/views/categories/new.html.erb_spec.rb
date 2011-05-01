@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe "categories/new.html.erb" do
   before(:each) do
-    assign(:category, stub_model(Category).as_new_record)
+    @category = assign(:category, stub_model(Category).as_new_record)
+    @board = assign(:board, stub_model(Board).as_new_record)
+    @board.stub(:id){'1'}
   end
 
   it "renders new category form" do
