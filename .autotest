@@ -1,5 +1,5 @@
 Autotest.add_hook :initialize do |autotest|
-  ['.git', 'tmp', 'log', 'public/javascripts/active_scaffold',
+  ['.git','tmp',%r{^\./db}, 'log', 'public/javascripts/active_scaffold',
     'public/images/active_scaffold', 'public/stylesheets/active_scaffold',
     'public/blank.html', 'capybara-*'].each do |exception|
     autotest.add_exception(exception)
