@@ -4,7 +4,8 @@
 	</tr>
 	<% @category.tickets.each do |ticket|%>
 		<tr>
-			<td>ticket.id<td>
+			<td><%=ticket.name%></td>
+			<td><%=link_to 'Delete',ticket,:confirm=>"Are you sure?",:method=>:delete%></td>	
 		</tr>
 	<% end %>
 </table>

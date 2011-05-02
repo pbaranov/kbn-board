@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20110419092107) do
   end
 
   create_table "tickets", :force => true do |t|
+    t.string   "name"
+    t.string   "body"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"

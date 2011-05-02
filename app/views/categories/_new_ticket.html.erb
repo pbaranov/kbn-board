@@ -1,0 +1,6 @@
+<% ticket=Ticket.new%>
+<%= form_for ticket, :url => category_tickets_path(@category) do |t|%>
+	<%=t.label :name%>
+	<%=t.text_field :name%>
+	<%=t.submit "Add ticket"%>
+<% end%>

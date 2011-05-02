@@ -3,13 +3,13 @@ require "spec_helper"
 describe TicketsController do
   describe "routing" do
 
-    #it "recognizes and generates #index" do
-     # { :get => "/tickets" }.should route_to(:controller => "tickets", :action => "index")
-    #end
-
-    it "recognizes and generates #new" do
-      { :get => "/tickets/new" }.should route_to(:controller => "tickets", :action => "new")
+    it "recognizes and generates #index" do
+      { :get => "/tickets" }.should route_to(:controller => "tickets", :action => "index")
     end
+
+    #it "recognizes and generates #new" do
+     # { :get => "/categories/1/tickets/new" }.should route_to(:controller => "tickets", :action => "new", :category_id =>"1")
+    #end
 
     it "recognizes and generates #show" do
       { :get => "/tickets/1" }.should route_to(:controller => "tickets", :action => "show", :id => "1")
@@ -20,7 +20,7 @@ describe TicketsController do
     end
 
     it "recognizes and generates #create" do
-      { :post => "/tickets" }.should route_to(:controller => "tickets", :action => "create")
+      { :post => "/categories/1/tickets" }.should route_to(:controller => "tickets", :action => "create", :category_id => "1")
     end
 
     it "recognizes and generates #update" do
