@@ -1,0 +1,13 @@
+
+<table>
+<% category.tickets.each do |t|%>
+	<tr>
+		<td>
+		  <div id="<%=t.id%>"style="width:80px;height:80px;border:1px solid #000;">
+		  	<%=t.name%>
+		  <%= draggable_element "#{t.id}",:revert=>true %>
+		  </div>
+		</td>
+    </tr>
+<% end%>
+</table>

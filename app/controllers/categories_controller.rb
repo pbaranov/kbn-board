@@ -58,6 +58,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def add_ticket
+  	logger.debug "Element_id= "+ params[:id].to_s
+  	render :back
+  end
+
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy

@@ -10,9 +10,14 @@ KbnBoard::Application.routes.draw do
   resources :actions
   resources :categories, :except => :index do
     resources :tickets
+    collection do
+    	get 'add_ticket'=> 'categories#add_ticket'
+    	post 'add_ticket'=> 'categories#add_ticket'
+    end
   end
   resources :boards do
-	  resources :categories
+	  resources :categories do
+     end
   end
   resources :user_sessions
 
