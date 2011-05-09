@@ -10,14 +10,18 @@ describe CategoriesController do
     @mock_category ||= mock_model(Category, stubs).as_null_object
   end
 
-  #def mock_board(stubs={})
-   # @mock_board ||= mock_model(Board, stubs).as_null_object    
-  #end
+  def mock_ticket(stubs={})
+    @mock_ticket ||= mock_model(Ticket, stubs).as_null_object    
+  end
+
+  before(:each) do
+  	back = :'http://test.com/sessions/new'
+    @request.env['HTTP_REFERER'] = back.to_s
+  end
 
   describe "GET show"  do
     it "assigns the requested category as @category" do
       Category.stub(:find).with("37") { mock_category }
-   #   Board.stub(:find).with('23') { mock_board }
       get :show, :id => "37",:board_id=>'23'
       assigns(:category).should be(mock_category)
     end
@@ -37,6 +41,28 @@ describe CategoriesController do
       get :edit, :id => "37"
       assigns(:category).should be(mock_category)
     end
+  end
+  
+  describe "PUT move_ticket" do
+  	it "assign the requested categories and ticket" do
+  		Category.stub(:find).with("37") {mock_category}
+  		Ticket.stub(:find).with("24") {mock_ticket}
+  		put :move_ticket, :to => "37",:id =>"24"
+  		assigns(:category).should be(mock_category)
+  	end
+  	
+  	it "removes ticket from old category and adds to a new one" do
+  		c1 = Factory.create(:category, :name=>"Cat1")
+  		c2 = Factory.create(:category, :name=>"Cat2")
+  		ticket = Factory.create(:ticket,:category=>c1)
+  		put :move_ticket, :to=>c2.id.to_s,:id=>ticket.id.to_s
+  		ticket.reload
+  		c2.reload
+  		c1.reload
+  		c2.should have(1).tickets
+  		c1.should have(0).tickets
+  		ticket.category.should eql c2
+  	end
   end
 
 

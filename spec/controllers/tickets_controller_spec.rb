@@ -9,7 +9,6 @@ describe TicketsController  do
   before(:each) do
   	back = :'http://test.com/sessions/new'
     @request.env['HTTP_REFERER'] = back.to_s
-  	
   end
 
   def mock_ticket(stubs={})

@@ -9,4 +9,9 @@ class Category < ActiveRecord::Base
 		self.board_id=board_id
 		self
 	end
+	
+	def div_id
+		str = "cat_"+self.id.to_s
+		str.to_sym
+	end
 end

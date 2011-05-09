@@ -1,0 +1,6 @@
+<div id="<%=c.div_id%>" class="<%=cl%>">
+  <h3 align="center"><%=c.name%></h3>
+  <%= render 'boards/tickets', {:category => c}%>
+  <%=drop_receiving_element c.div_id.to_s, 
+	  :url=>{:controller=>"categories",:action=>"move_ticket",:to=>c.id.to_s}%>
+</div>

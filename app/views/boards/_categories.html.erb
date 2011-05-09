@@ -21,13 +21,8 @@ border-left:1px solid black;
        	  	cl="category category_next"
        	  end%>
     	<td>
-        	<div id="<%=c.id%>"class="<%=cl%>">
-        		<h3 align="center"><%=c.name%></h3>
-        		<%= render 'tickets', {:category => c}%>
-			<%=drop_receiving_element c.id.to_s, 
-			 :url=>{:controller=>"categories",:action=>"add_ticket"}%>
-			</div>
-    	</td>
+    		<%= render 'categories/category', {:cl=>cl,:c=>c}%>
+       </td>
     <% end%>
     </tr>
 	</table>

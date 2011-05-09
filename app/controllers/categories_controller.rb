@@ -58,9 +58,14 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def add_ticket
+  def move_ticket
   	logger.debug "Element_id= "+ params[:id].to_s
-  	render :back
+  	logger.debug "To= "+ params[:to].to_s
+  	@category = Category.find(params[:to])
+  	@ticket = Ticket.find(params[:id])
+  	@ticket.category=@category
+  	@category.tickets<<@ticket
+  	
   end
 
   # DELETE /categories/1

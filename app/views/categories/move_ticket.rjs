@@ -1,0 +1,2 @@
+page[@category.div_id].replace :partial => "category", :locals=>{:c=>@category,:cl=>"category category_next"}
+page.reload
